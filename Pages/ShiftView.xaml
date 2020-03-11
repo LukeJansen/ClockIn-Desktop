@@ -1,0 +1,104 @@
+﻿<Page
+    x:Class="ClockIn_Desktop.Pages.ShiftView"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClockIn_Desktop.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<ListView x:Name="ShiftListView" Grid.Column="0" Margin="25 0 0 0">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" x:Name="HeaderColumn"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontSize="24" Text="Location" Grid.Column="0"/>
+                            <TextBlock FontSize="24" Text="Role"     Grid.Column="1"/>
+                            <TextBlock FontSize="24" Text="Date"     Grid.Column="2"/>
+                            <TextBlock FontSize="24" Text="Start"    Grid.Column="3"/>
+                            <TextBlock FontSize="24" Text="Finish"   Grid.Column="4"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock FontSize="24" Text="{Binding Location}" Grid.Column="0"></TextBlock>
+                            <TextBlock FontSize="24" Text="{Binding Role}"     Grid.Column="1"></TextBlock>
+                            <TextBlock FontSize="24" Text="{Binding Date}"     Grid.Column="2"></TextBlock>
+                            <TextBlock FontSize="24" Text="{Binding Start}"    Grid.Column="3"></TextBlock>
+                            <TextBlock FontSize="24" Text="{Binding Finish}"   Grid.Column="4"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+
+            <controls:DataGrid x:Name="ShiftListView" Margin="25 0 0 0" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{x:Bind shiftList}">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn
+                        Header="Location" 
+                        Width="*"
+                        Binding="{Binding Location}" 
+                        FontSize="20" />
+                    <controls:DataGridTextColumn
+                        Header="Role" 
+                        Width="*"
+                        Binding="{Binding Role}" 
+                        FontSize="20" />
+                    <controls:DataGridTextColumn
+                        Header="Date" 
+                        Width="*"
+                        Binding="{Binding DateString}" 
+                        FontSize="20" />
+                    <controls:DataGridTextColumn
+                        Header="Start Time" 
+                        Width="*"
+                        Binding="{Binding StartString}" 
+                        FontSize="20" />
+                    <controls:DataGridTextColumn
+                        Header="Finish Time" 
+                        Width="*"
+                        Binding="{Binding FinishString}" 
+                        FontSize="20" />
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+
+            <Button Grid.Column="1" FontSize="24" Content="Add Shift"        MinWidth="250" VerticalAlignment="Top" Margin="10 50 10 0"  Click="Button_Click"/>
+            <Button Grid.Column="1" FontSize="24" Content="Edit Shift"       MinWidth="250" VerticalAlignment="Top" Margin="10 110 10 0" Click="Button_Click"/>
+            <Button Grid.Column="1" FontSize="24" Content="Assign Employees" MinWidth="250" VerticalAlignment="Top" Margin="10 170 10 0"/>
+            <Button Grid.Column="1" FontSize="24" Content="Delete Shift"     MinWidth="250" VerticalAlignment="Top" Margin="10 230 10 0" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Page>

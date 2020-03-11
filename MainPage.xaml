@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="ClockIn_Desktop.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClockIn_Desktop"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <NavigationView PaneDisplayMode="LeftCompact" x:Name="NavView" ItemInvoked="NavigationView_OnItemInvoked" Loaded="NavigationView_Loaded">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Uid="ShiftNavItem" Icon="Calendar" Content="Shifts" Tag="shifts"/>
+                <NavigationViewItem x:Uid="UsersNavItem" Icon="Contact" Content="Users" Tag="users"/>
+            </NavigationView.MenuItems>
+
+            <NavigationView.Content>
+                <Frame x:Name="mainFrame"/>
+            </NavigationView.Content>
+        </NavigationView>
+    </Grid>
+</Page>
