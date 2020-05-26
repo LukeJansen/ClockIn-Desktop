@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="4a29b3c9-118a-4c76-b8f6-2ce8586cecc0"
-    Publisher="CN=lpjan"
-    Version="1.0.0.0" />
+    Name="36180LukeJansen.ClockInTimekeeping"
+    Publisher="CN=BFBB4FBA-D5BC-45D1-B0D5-F298E20EF9C0"
+    Version="1.0.1.0" />
 
-  <mp:PhoneIdentity PhoneProductId="4a29b3c9-118a-4c76-b8f6-2ce8586cecc0" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="d5da5937-93ae-45e7-993e-224d36e78ed7" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>ClockIn-Desktop</DisplayName>
-    <PublisherDisplayName>lpjan</PublisherDisplayName>
+    <DisplayName>ClockIn Timekeeping</DisplayName>
+    <PublisherDisplayName>Luke Jansen</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -37,10 +37,11 @@
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="ClockIn-Desktop"
         BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
+        <uap:LockScreen BadgeLogo="Assets\BadgeLogo.png" Notification="badge"/>
       </uap:VisualElements>
     </Application>
   </Applications>

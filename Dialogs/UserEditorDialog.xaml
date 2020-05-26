@@ -1,0 +1,55 @@
+﻿<ContentDialog
+    x:Class="ClockIn_Desktop.Pages.UserEditorDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClockIn_Desktop.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="User Editor"
+    PrimaryButtonText="Save"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="UserEditorDialog_Save"
+    SecondaryButtonClick="UserEditorDialog_Cancel"
+    Closing="ContentDialog_Closing">
+    
+    <Grid Width="400">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid Width="400" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="First Name"    Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBlock Text="Last Name"     Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBlock Text="Email"         Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBlock Text="Phone Number"  Grid.Column="0" Grid.Row="3" VerticalAlignment="Center"/>
+            <TextBlock Text="Date of Birth" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center"/>
+            <TextBlock Text="User Type"     Grid.Column="0" Grid.Row="5" VerticalAlignment="Center"/>
+
+            <TextBox x:Name="firstNameTextBox"    Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False"/>
+            <TextBox x:Name="lastNameTextBox"     Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False"/>
+            <TextBox x:Name="emailTextBox"        Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False"/>
+            <TextBox x:Name="phoneTextBox"        Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False"/>
+            <CalendarDatePicker x:Name="dobDatePicker"  Grid.Column="1" Grid.Row="4" FirstDayOfWeek="Monday" PlaceholderText="Date of Birth" HorizontalAlignment="Center" Width="306"/>
+            <ComboBox x:Name="typeComboBox" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Width="306"/>
+
+        </Grid>
+
+        <TextBlock x:Name="errorTextBox" Grid.Row="1" Height="Auto" Foreground="Red" Text=""/>
+    </Grid>
+</ContentDialog>

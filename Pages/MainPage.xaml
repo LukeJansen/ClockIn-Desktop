@@ -9,15 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <NavigationView PaneDisplayMode="LeftCompact" x:Name="NavView" ItemInvoked="NavigationView_OnItemInvoked" Loaded="NavigationView_Loaded">
+        <NavigationView PaneDisplayMode="LeftCompact" x:Name="NavView" ItemInvoked="NavigationView_OnItemInvoked" Loaded="NavigationView_Loaded" BackRequested="NavView_BackRequested">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Uid="ShiftNavItem" Icon="Calendar" Content="Shifts" Tag="shifts"/>
                 <NavigationViewItem x:Uid="UsersNavItem" Icon="Contact" Content="Users" Tag="users"/>
+                <NavigationViewItem x:Uid="ExportNavItem" Icon="Share" Content="Export Data" Tag="export"/>
             </NavigationView.MenuItems>
 
             <NavigationView.Content>
                 <Frame x:Name="mainFrame"/>
             </NavigationView.Content>
         </NavigationView>
+
+        <ProgressRing x:Name="MainProgressRing" VerticalAlignment="Center" HorizontalAlignment="Center" Height="100" Width="100" IsActive="False" Visibility="Visible" />
     </Grid>
 </Page>

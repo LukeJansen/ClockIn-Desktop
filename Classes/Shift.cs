@@ -17,11 +17,13 @@ namespace ClockIn_Desktop
             this.Role = null;
             this.Start = DateTime.Now;
             this.Finish = DateTime.Now;
-            this.Users = new List<User>();
+            this.Users = new List<string>();
+            this.ClockIn = new Dictionary<string, string>();
+            this.ClockOut = new Dictionary<string, string>();
         }
 
         [JsonConstructor]
-        public Shift(string id, string location, string role, string start, string finish, List<User> users)
+        public Shift(string id, string location, string role, string start, string finish, List<string> users, Dictionary<string,string> clockIn, Dictionary<string,string> clockOut)
         {
             this._ID = id;
             this.Location = location;
@@ -29,6 +31,10 @@ namespace ClockIn_Desktop
             this.Start = DateTime.Parse(start, null, DateTimeStyles.RoundtripKind);
             this.Finish = DateTime.Parse(finish, null, DateTimeStyles.RoundtripKind);
             this.Users = users;
+            this.ClockIn = clockIn;
+            if (clockIn == null) this.ClockIn = new Dictionary<string, string>();
+            this.ClockOut = clockOut;
+            if (clockOut == null) this.ClockOut = new Dictionary<string, string>();
         }
 
         public string _ID { get; set; }
@@ -56,6 +62,8 @@ namespace ClockIn_Desktop
                 return Finish.ToString("h:mm tt");
             }
         }
-        public List<User> Users { get; set; }
+        public List<string> Users { get; set; }
+        public Dictionary<string,string> ClockIn { get; set; }
+        public Dictionary<string,string> ClockOut { get; set; }
     }
 }

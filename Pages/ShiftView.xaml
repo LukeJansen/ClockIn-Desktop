@@ -10,95 +10,74 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <TextBlock x:Name="titleText" Grid.Row="0" Margin="25 25 25 25" Style="{StaticResource HeaderTextBlockStyle}">Shift View</TextBlock>
+        <ScrollViewer Grid.Row="1" Margin="25 25 25 25">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <!--<ListView x:Name="ShiftListView" Grid.Column="0" Margin="25 0 0 0">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        <Setter Property="Padding" Value="0"/>
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.HeaderTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" x:Name="HeaderColumn"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-                            <TextBlock FontSize="24" Text="Location" Grid.Column="0"/>
-                            <TextBlock FontSize="24" Text="Role"     Grid.Column="1"/>
-                            <TextBlock FontSize="24" Text="Date"     Grid.Column="2"/>
-                            <TextBlock FontSize="24" Text="Start"    Grid.Column="3"/>
-                            <TextBlock FontSize="24" Text="Finish"   Grid.Column="4"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.HeaderTemplate>
+                <TextBox Grid.Row="0" x:Name="locationTextBox" Header="Location" Margin="0 0 0 25"></TextBox>
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="1" x:Name="roleTextBox" Header="Role" Margin="0 0 0 25"></TextBox>
 
-                            <TextBlock FontSize="24" Text="{Binding Location}" Grid.Column="0"></TextBlock>
-                            <TextBlock FontSize="24" Text="{Binding Role}"     Grid.Column="1"></TextBlock>
-                            <TextBlock FontSize="24" Text="{Binding Date}"     Grid.Column="2"></TextBlock>
-                            <TextBlock FontSize="24" Text="{Binding Start}"    Grid.Column="3"></TextBlock>
-                            <TextBlock FontSize="24" Text="{Binding Finish}"   Grid.Column="4"></TextBlock>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
+                <StackPanel Grid.Row="2" Orientation="Horizontal"  Margin="0 0 0 25">
+                    <CalendarDatePicker x:Name="startDatePicker" FirstDayOfWeek="Monday" PlaceholderText="Start Date" Header="Start"/>
+                    <TimePicker         x:Name="startTimePicker" ClockIdentifier="12HourClock" Time="0" MinuteIncrement="5" VerticalAlignment="Bottom"/>
+                </StackPanel>
 
-            <controls:DataGrid x:Name="ShiftListView" Margin="25 0 0 0" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{x:Bind shiftList}">
-                <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn
-                        Header="Location" 
-                        Width="*"
-                        Binding="{Binding Location}" 
-                        FontSize="20" />
-                    <controls:DataGridTextColumn
-                        Header="Role" 
-                        Width="*"
-                        Binding="{Binding Role}" 
-                        FontSize="20" />
-                    <controls:DataGridTextColumn
-                        Header="Date" 
-                        Width="*"
-                        Binding="{Binding DateString}" 
-                        FontSize="20" />
-                    <controls:DataGridTextColumn
-                        Header="Start Time" 
-                        Width="*"
-                        Binding="{Binding StartString}" 
-                        FontSize="20" />
-                    <controls:DataGridTextColumn
-                        Header="Finish Time" 
-                        Width="*"
-                        Binding="{Binding FinishString}" 
-                        FontSize="20" />
-                </controls:DataGrid.Columns>
-            </controls:DataGrid>
+                <StackPanel Grid.Row="3" Orientation="Horizontal"  Margin="0 0 0 25">
+                    <CalendarDatePicker x:Name="finishDatePicker" FirstDayOfWeek="Monday" PlaceholderText="Start Date" Header="Finish"/>
+                    <TimePicker         x:Name="finishTimePicker" ClockIdentifier="12HourClock" Time="0" MinuteIncrement="5" VerticalAlignment="Bottom"/>
+                </StackPanel>
 
-            <Button Grid.Column="1" FontSize="24" Content="Add Shift"        MinWidth="250" VerticalAlignment="Top" Margin="10 50 10 0"  Click="Button_Click"/>
-            <Button Grid.Column="1" FontSize="24" Content="Edit Shift"       MinWidth="250" VerticalAlignment="Top" Margin="10 110 10 0" Click="Button_Click"/>
-            <Button Grid.Column="1" FontSize="24" Content="Assign Employees" MinWidth="250" VerticalAlignment="Top" Margin="10 170 10 0"/>
-            <Button Grid.Column="1" FontSize="24" Content="Delete Shift"     MinWidth="250" VerticalAlignment="Top" Margin="10 230 10 0" Click="Button_Click"/>
-        </Grid>
+                <TextBlock x:Name="errorTextBox" Grid.Row="4" Foreground="Red" Height="Auto" Style="{StaticResource SubtitleTextBlockStyle}"/>
+
+                <StackPanel Grid.Row="5" Orientation="Horizontal">
+                    <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Margin="0 25 25 25" Style="{StaticResource SubheaderTextBlockStyle}">User ClockIn Information</TextBlock>
+                    <Button Width="150" Padding="0 5 0 5" Margin="0 10 25 10" Click="AssignButton_Click">Assign Users</Button>
+                </StackPanel>
+                
+
+                <Grid x:Name="userGrid" Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="0 0 25 0" Style="{StaticResource SubtitleTextBlockStyle}">Name</TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Margin="0 0 25 0" Style="{StaticResource SubtitleTextBlockStyle}">ClockIn Time</TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Margin="0 0 25 0" Style="{StaticResource SubtitleTextBlockStyle}">ClockOut Time</TextBlock>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row ="2" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Width="150" Padding="0 5 0 5" Margin="25 10 25 10" Click="SaveButton_Click">Save</Button>
+            <Button Width="150" Padding="0 5 0 5" Margin="0 10 25 10" Click="DeleteButton_Click">Delete</Button>
+            <Button Width="150" Padding="0 5 0 5" Margin="0 10 25 10" Click="CancelButton_Click">Cancel</Button>
+        </StackPanel>
     </Grid>
 </Page>

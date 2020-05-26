@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="ClockIn_Desktop.Pages.UserList"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClockIn_Desktop.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBox x:Name="SearchTextBox" Grid.Column="0" Margin="25 0 25 0" PlaceholderText="Search for Name" TextChanged="TextBox_TextChanged"/>
+                <Button  x:Name="RefreshButton" Grid.Column="1" HorizontalAlignment="Right" Click="RefreshButton_Click">
+                    <SymbolIcon Symbol="Refresh"/>
+                </Button>
+            </Grid>
+            
+            <controls:DataGrid x:Name="UserListView" Grid.Column="0" Grid.Row="1" Margin="25 0 0 0" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{x:Bind mainPage.UserList}" Sorting="UserListView_Sorting">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn
+                        Header="First Name" 
+                        Width="*"
+                        Binding="{Binding FirstName}" 
+                        FontSize="20"
+                        CanUserSort="True"/>
+                    <controls:DataGridTextColumn
+                        Header="Last Name" 
+                        Width="*"
+                        Binding="{Binding LastName}" 
+                        FontSize="20" 
+                        CanUserSort="True"/>
+                    <controls:DataGridTextColumn
+                        Header="Email" 
+                        Width="Auto"
+                        Binding="{Binding Email}" 
+                        FontSize="20" />
+                    <controls:DataGridTextColumn
+                        Header="Phone Number" 
+                        Width="*"
+                        Binding="{Binding Phone}" 
+                        FontSize="20" />
+                    <controls:DataGridTextColumn
+                        Header="Date of Birth" 
+                        Width="*"
+                        Binding="{Binding DOBString}" 
+                        FontSize="20" />
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+
+            <Button Grid.Column="1" Grid.Row="1" FontSize="24" Content="Add User"       MinWidth="250" VerticalAlignment="Top" Margin="10 50 10 0"  Click="Button_Click"/>
+            <Button Grid.Column="1" Grid.Row="1" FontSize="24" Content="Edit User"      MinWidth="250" VerticalAlignment="Top" Margin="10 110 10 0" Click="Button_Click"/>
+            <Button Grid.Column="1" Grid.Row="1" FontSize="24" Content="Delete User"    MinWidth="250" VerticalAlignment="Top" Margin="10 170 10 0" Click="Button_Click"/>
+            <Button Grid.Column="1" Grid.Row="1" FontSize="24" Content="Reset Password" MinWidth="250" VerticalAlignment="Top" Margin="10 230 10 0" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Page>
