@@ -153,7 +153,7 @@ namespace ClockIn_Desktop.Pages
         {
             string userID = (string)((Button)sender).Tag;
             string shiftID = shift._ID;
-            string json = "{\"shiftID\": \"" + shiftID + "\",\"userID\" : \"" + userID + "\"}";
+            string json = "{\"ShiftID\": \"" + shiftID + "\",\"UserID\" : \"" + userID + "\"}";
 
             ContentDialog DeleteCheck = new ContentDialog()
             {
@@ -166,9 +166,9 @@ namespace ClockIn_Desktop.Pages
             var result = await DeleteCheck.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
-                await Utility.SendToApi(Utility.APIURL + "clock/reset", json, "DELETE", mainPage.MainAuth.AccessToken);
+                await Utility.SendToApi(Utility.APIURL + "clock/reset", json, "POST", mainPage.MainAuth.AccessToken);
 
-                mainPage.RefreshShifts();
+                await mainPage.RefreshShifts();
                 mainPage.SelectedShift = mainPage.ShiftList.Find(i => i._ID == shiftID);
 
                 mainPage.ShiftViewNavigate();
